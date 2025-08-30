@@ -25,13 +25,16 @@ export class CardsService {
     offset?: string | null,
     num?: string | null,
     attribute?: string | null,
-    type?: string | null
+    type?: string | null,
+    name?: string | null
   ): Promise<CardsResponse> {
     const params = new URLSearchParams();
 
     if (offset) params.append("offset", offset);
 
     if (num) params.append("num", num);
+
+    if (name) params.append("name", name);
 
     if (attribute) params.append("attribute", attribute);
 

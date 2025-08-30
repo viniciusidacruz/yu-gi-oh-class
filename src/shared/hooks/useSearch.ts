@@ -1,23 +1,16 @@
 import { useQueryState } from "nuqs";
-import { useLocation, useNavigate } from "react-router-dom";
 import { useState, type ChangeEvent, type FormEvent } from "react";
 
-import { ROUTES } from "@/shared/constants";
-
 export const useSearch = () => {
-  const [search] = useQueryState("search");
+  const [search, setSearch] = useQueryState("name");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, setOffset] = useQueryState("offset");
   const [value, setValue] = useState(search ?? "");
-
-  const navigate = useNavigate();
-  const location = useLocation();
 
   const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const params = new URLSearchParams(location.search);
-    params.set("search", value);
-
-    navigate(`${ROUTES.SEARCH}?${params.toString()}`);
+    setSearch(encodeURIComponent(value));
+    setOffset("0");
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

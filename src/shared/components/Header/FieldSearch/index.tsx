@@ -8,7 +8,7 @@ export const FieldSearch = () => {
   return (
     <form
       onSubmit={handleSearch}
-      className="lg:w-[494px] border border-[#34AC40] h-[50px] rounded-[5px] bg-[#F5F5F5] flex items-center justify-between pr-[15px]"
+      className="lg:w-[494px] border border-primary h-[50px] rounded-[5px] bg-[#F5F5F5] flex items-center justify-between pr-[15px]"
     >
       <input
         type="text"
@@ -19,7 +19,7 @@ export const FieldSearch = () => {
       />
 
       <button type="submit">
-        <Search className="text-[#34AC40]" />
+        <Search className="text-primary" />
       </button>
     </form>
   );
