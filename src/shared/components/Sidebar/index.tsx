@@ -23,18 +23,18 @@ export const Sidebar = ({ isLoading, data }: SidebarProps) => {
       <div className="flex items-center gap-0 lg:gap-4 flex-col lg:flex-row">
         <Button
           type="button"
-          variant="secondary"
+          variant="primary"
           disabled={isLoading}
-          className="w-full lg:w-auto"
+          className="w-full"
         >
           PESQUISAR
         </Button>
 
         <Button
           type="button"
-          variant="primary"
+          variant="secondary"
           disabled={isLoading}
-          className="w-full lg:w-auto"
+          className="w-full"
         >
           LIMPAR FILTROS
         </Button>

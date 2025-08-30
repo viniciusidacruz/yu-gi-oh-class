@@ -11,7 +11,7 @@ export const Button = ({
 }: ButtonProps) => (
   <button
     className={cn(
-      "px-4 py-2 mt-5 text-white font-bold hover:brightness-110 transition-all duration-300 cursor-pointer",
+      "py-2 mt-5 text-white font-bold hover:brightness-110 transition-all duration-300 cursor-pointer flex-nowrap",
       variant === "primary" ? "bg-primary" : "bg-secondary",
       disabled ? "opacity-50 cursor-not-allowed" : "opacity-100 cursor-pointer",
       className
