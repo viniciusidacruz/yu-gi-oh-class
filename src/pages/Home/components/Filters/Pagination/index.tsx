@@ -10,7 +10,7 @@ export const Pagination = ({ data }: PaginationProps) => {
     usePagination(data);
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 justify-center lg:justify-start">
       <button
         type="button"
         disabled={prevDisabled}
