@@ -1,4 +1,7 @@
-import { FieldSearch, Logo, MiniCart } from "@/shared/components";
+import { Logo } from "@/shared/components";
+
+import { MiniCart } from "./MiniCart";
+import { FieldSearch } from "./FieldSearch";
 
 export const Header = () => (
   <header className="bg-[#131A0A] w-full py-8">
