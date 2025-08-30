@@ -5,6 +5,8 @@
   --secondary-color: #F46D1B;
   --tertiary-color: #666666;
   --white-color: #FFFFFF;
+
+  --font-inter: "Inter", sans-serif;
 }
 
 @theme {
@@ -12,6 +14,8 @@
   --color-secondary: var(--secondary-color);
   --color-tertiary: var(--tertiary-color);
   --color-white: var(--white-color);
+
+  --font-inter: var(--font-inter);
   
   --animate-puls: puls 1.5s ease-in-out infinite;
 
@@ -22,6 +26,10 @@
 }
 
 @layer base {
+  body, html {
+    @apply font-inter;
+  }
+
   button {
     @apply cursor-pointer;
   }
