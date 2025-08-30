@@ -1,15 +1,14 @@
 import { Fragment } from "react";
 
 import { Button } from "@/shared/components";
-import { useStableFilterOptions } from "@/shared/hooks";
+import { extractOptions } from "@/shared/utils";
+import { useGetAllCards } from "@/shared/hooks/useGetAllCards";
 
 import { Group } from "./Group";
-import type { SidebarProps } from "./types";
 
-export const Sidebar = ({ isLoading, data }: SidebarProps) => {
-  const { types, attributes } = useStableFilterOptions(data);
-
-  const isEmpty = !data.length;
+export const Sidebar = () => {
+  const { allCards, isLoading, isEmpty } = useGetAllCards();
+  const options = extractOptions(allCards ?? []);
 
   return (
     <aside className="w-full lg:w-[315px]">
@@ -22,9 +21,9 @@ export const Sidebar = ({ isLoading, data }: SidebarProps) => {
       ) : (
         <Fragment>
           <Group
+            options={options}
             isLoading={isLoading}
             title="TIPO / ATRIBUTO"
-            options={[...types, ...attributes]}
           />
 
           <div className="flex items-center gap-0 lg:gap-4 flex-col lg:flex-row">

@@ -9,8 +9,5 @@ export function extractOptions(cards: Card[]) {
     if (c.attribute) attributes.add(c.attribute);
   }
 
-  return {
-    types: Array.from(types).sort(),
-    attributes: Array.from(attributes).sort(),
-  };
+  return [...Array.from(types).sort(), ...Array.from(attributes).sort()];
 }

@@ -22,15 +22,16 @@ export interface CardsResponse {
 
 export class CardsService {
   static async getCards(
-    offset: string | null,
-    num: string | null,
-    attribute: string | null,
-    type: string | null
+    offset?: string | null,
+    num?: string | null,
+    attribute?: string | null,
+    type?: string | null
   ): Promise<CardsResponse> {
-    const params = new URLSearchParams({
-      offset: offset ?? "0",
-      num: num ?? "10",
-    });
+    const params = new URLSearchParams();
+
+    if (offset) params.append("offset", offset);
+
+    if (num) params.append("num", num);
 
     if (attribute) params.append("attribute", attribute);
 

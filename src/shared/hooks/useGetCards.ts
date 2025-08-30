@@ -5,9 +5,9 @@ import { useQueryState } from "nuqs";
 import { CardsService } from "../services";
 
 export const useGetCards = () => {
-  const [num] = useQueryState("num");
+  const [num] = useQueryState("num", { defaultValue: "10" });
   const [type] = useQueryState("type");
-  const [offset] = useQueryState("offset");
+  const [offset] = useQueryState("offset", { defaultValue: "0" });
   const [attribute] = useQueryState("attribute");
 
   return useQuery({
