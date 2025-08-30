@@ -6,10 +6,10 @@ import { queryClient, routes } from "@/config";
 
 export const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <NuqsAdapter>
+    <NuqsAdapter>
+      <QueryClientProvider client={queryClient}>
         <RouterProvider router={routes} />
-      </NuqsAdapter>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </NuqsAdapter>
   );
 };

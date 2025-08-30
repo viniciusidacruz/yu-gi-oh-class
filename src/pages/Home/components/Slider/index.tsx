@@ -8,7 +8,7 @@ export const Slider = () => {
   });
 
   return (
-    <div>
+    <section>
       <img src={SLIDER_IMAGES[currentSlide]} alt="slider" />
 
       <div className="flex items-center gap-2 justify-center mt-[14px]">
@@ -27,6 +27,6 @@ export const Slider = () => {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };

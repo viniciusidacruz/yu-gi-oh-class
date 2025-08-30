@@ -8,7 +8,7 @@ export const Layout = () => (
   <Fragment>
     <Header />
 
-    <main>
+    <main className="min-h-[calc(100vh-400px)]">
       <Outlet />
     </main>
 

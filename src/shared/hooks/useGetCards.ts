@@ -1,11 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 
+import { useQueryState } from "nuqs";
+
 import { CardsService } from "../services";
 
 export const useGetCards = () => {
+  const [num] = useQueryState("num");
+  const [type] = useQueryState("type");
+  const [offset] = useQueryState("offset");
+  const [attribute] = useQueryState("attribute");
+
   return useQuery({
-    queryKey: ["cards"],
-    queryFn: CardsService.getCards,
+    queryKey: ["cards", offset, num, attribute, type],
+    queryFn: () => CardsService.getCards(offset, num, attribute, type),
     refetchOnWindowFocus: false,
     staleTime: 1000 * 60 * 60 * 24, // 24 hours
   });

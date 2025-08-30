@@ -20,3 +20,9 @@
     100% { opacity: 0; }
   }
 }
+
+@layer base {
+  button {
+    @apply cursor-pointer;
+  }
+}
