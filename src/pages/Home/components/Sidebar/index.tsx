@@ -1,7 +1,7 @@
 import { useStableFilterOptions } from "@/shared/hooks";
+import { Button } from "@/shared/components";
 
 import { Group } from "./Group";
-import { Button } from "../Button";
 
 import type { SidebarProps } from "./types";
 
