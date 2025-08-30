@@ -9,7 +9,7 @@ export const Sidebar = ({ isLoading, data }: SidebarProps) => {
   const { types, attributes } = useStableFilterOptions(data);
 
   return (
-    <aside>
+    <aside className="w-full lg:w-[315px]">
       <h3 className="text-[26px] font-bold pb-1 border-b border-primary text-primary mb-[19px]">
         FILTROS
       </h3>
