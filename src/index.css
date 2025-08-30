@@ -1,1 +1,20 @@
 @import "tailwindcss";
+
+:root {
+  --primary-color: #34ac40;
+  --secondary-color: #F46D1B;
+  --tertiary-color: #666666;
+}
+
+@theme {
+  --color-primary: var(--primary-color);
+  --color-secondary: var(--secondary-color);
+  --color-tertiary: var(--tertiary-color);
+
+  --animate-puls: puls 1.5s ease-in-out infinite;
+
+  @keyframes puls {
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
+  }
+}
