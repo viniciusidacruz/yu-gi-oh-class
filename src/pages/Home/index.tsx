@@ -1,5 +1,7 @@
-import { Sidebar, Slider } from "@/shared/components";
 import { useGetCards } from "@/shared/hooks";
+
+import { Slider } from "./components/Slider";
+import { Sidebar } from "./components/Sidebar";
 
 export const Home = () => {
   const { data = [], isLoading } = useGetCards();
