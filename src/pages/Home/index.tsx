@@ -1,4 +1,4 @@
-import { Sidebar } from "@/shared/components";
+import { Sidebar, Slider } from "@/shared/components";
 import { useGetCards } from "@/shared/hooks";
 
 export const Home = () => {
@@ -9,7 +9,7 @@ export const Home = () => {
       <Sidebar isLoading={isLoading} data={data} />
 
       <div className="flex-1">
-        <h1>Home</h1>
+        <Slider />
       </div>
     </div>
   );
