@@ -4,13 +4,15 @@
   --primary-color: #34ac40;
   --secondary-color: #F46D1B;
   --tertiary-color: #666666;
+  --white-color: #FFFFFF;
 }
 
 @theme {
   --color-primary: var(--primary-color);
   --color-secondary: var(--secondary-color);
   --color-tertiary: var(--tertiary-color);
-
+  --color-white: var(--white-color);
+  
   --animate-puls: puls 1.5s ease-in-out infinite;
 
   @keyframes puls {

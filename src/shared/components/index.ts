@@ -6,3 +6,4 @@ export * from "./MiniCart";
 export * from "./Sidebar";
 export * from "./Button";
 export * from "./Skeleton";
+export * from "./Footer";
