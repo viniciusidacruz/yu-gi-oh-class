@@ -6,20 +6,22 @@ import { CardsService } from "../services";
 
 export const useGetCards = () => {
   const [name] = useQueryState("name");
-  const [num] = useQueryState("num", { defaultValue: "10" });
   const [type] = useQueryState("type");
-  const [offset] = useQueryState("offset", { defaultValue: "0" });
+  const [race] = useQueryState("race");
   const [attribute] = useQueryState("attribute");
+  const [num] = useQueryState("num", { defaultValue: "10" });
+  const [offset] = useQueryState("offset", { defaultValue: "0" });
 
   const { data, isLoading } = useQuery({
-    queryKey: ["cards", offset, num, attribute, type, name],
+    queryKey: ["cards", offset, num, attribute, type, name, race],
     queryFn: () =>
       CardsService.getCards(
         offset,
         num,
-        attribute,
-        type,
-        decodeURIComponent(name ?? "")
+        decodeURIComponent(attribute ?? ""),
+        decodeURIComponent(type ?? ""),
+        decodeURIComponent(name ?? ""),
+        decodeURIComponent(race ?? "")
       ),
     refetchOnWindowFocus: false,
     staleTime: 1000 * 60 * 60 * 24, // 24 hours

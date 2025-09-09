@@ -26,7 +26,8 @@ export class CardsService {
     num?: string | null,
     attribute?: string | null,
     type?: string | null,
-    name?: string | null
+    name?: string | null,
+    race?: string | null
   ): Promise<CardsResponse> {
     const params = new URLSearchParams();
 
@@ -40,7 +41,11 @@ export class CardsService {
 
     if (type) params.append("type", type);
 
-    const response = await BASE_URL.get(`/cardinfo.php?${params.toString()}`);
+    if (race) params.append("race", race);
+
+    const response = await BASE_URL.get(
+      `/cardinfo.php?language=pt&${params.toString()}`
+    );
 
     return response.data;
   }

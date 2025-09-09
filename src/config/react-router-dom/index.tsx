@@ -1,7 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import { Home } from "@/pages";
+import { Checkout, Home } from "@/pages";
 import { Layout } from "@/shared/components";
+import { ROUTES } from "@/shared/constants";
 
 export const routes = createBrowserRouter([
   {
@@ -9,8 +10,12 @@ export const routes = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "/",
+        path: ROUTES.HOME,
         element: <Home />,
+      },
+      {
+        path: ROUTES.CHECKOUT,
+        element: <Checkout />,
       },
     ],
   },

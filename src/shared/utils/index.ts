@@ -1,4 +1,4 @@
 export * from "./tailwind-merge";
-export * from "./extract-options";
-export * from "./sort-by-name";
+export * from "./order-options";
 export * from "./format-currency";
+export * from "./get-total-value";

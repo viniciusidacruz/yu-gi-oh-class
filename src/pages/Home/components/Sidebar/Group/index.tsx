@@ -1,30 +1,30 @@
-import { sortByName } from "@/shared/utils";
-
 import type { GroupProps } from "./types";
-import { GroupSkeleton } from "./GroupSkeleton";
 
-export const Group = ({ title, options, isLoading }: GroupProps) => {
-  const sortedOptions = sortByName(options);
-
-  if (isLoading) return <GroupSkeleton />;
-
+export const Group = ({ title, options, onChange, value }: GroupProps) => {
   return (
     <div>
-      <h4 className="text-xl font-bold text-secondary mb-[15px]">{title}</h4>
+      <h4 className="text-xl font-bold text-secondary pt-[19px] mb-[15px]">
+        {title}
+      </h4>
 
       <ul className="flex-1 overflow-y-auto pr-2 max-h-[calc(100vh-400px)] mb-[30px]">
-        {sortedOptions.map((option) => {
-          const optionToLower = option.toLowerCase();
-
+        {options.map((option) => {
+          const isChecked = value.some((v) => v.value === option.value);
           return (
-            <li key={option} className="flex items-center gap-2">
-              <input type="checkbox" id={option} name={option} />
+            <li key={option.value} className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                id={option.value}
+                name={option.value}
+                checked={isChecked}
+                onChange={() => onChange(option)}
+              />
 
               <label
-                htmlFor={option}
+                htmlFor={option.value}
                 className="cursor-pointer text-tertiary capitalize"
               >
-                {optionToLower}
+                {option.label}
               </label>
             </li>
           );

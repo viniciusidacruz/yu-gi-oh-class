@@ -1,5 +1,8 @@
+import type { Option } from "@/shared/constants";
+
 export interface GroupProps {
+  value: Option[];
   title?: string;
-  options: string[];
-  isLoading: boolean;
+  options: Option[];
+  onChange: (options: Option) => void;
 }

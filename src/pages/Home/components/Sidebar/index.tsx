@@ -1,52 +1,61 @@
-import { Fragment } from "react";
-
+import { useFilters } from "@/shared/hooks";
 import { Button } from "@/shared/components";
-import { extractOptions } from "@/shared/utils";
-import { useGetAllCards } from "@/shared/hooks/useGetAllCards";
+import { orderOptions } from "@/shared/utils";
+import { ATTRIBUTE, RACE, CARD_TYPE } from "@/shared/constants";
 
 import { Group } from "./Group";
 
 export const Sidebar = () => {
-  const { allCards, isLoading, isEmpty } = useGetAllCards();
-  const options = extractOptions(allCards ?? []);
+  const {
+    onSubmit,
+    cardTypeOptions,
+    handleClearFilters,
+    typeAndAttributeOptions,
+    handleTypeAndAttributeOptionsChange,
+    handleCardTypeOptionsChange,
+  } = useFilters();
+
+  const typeAndAttribute = orderOptions([...RACE, ...ATTRIBUTE]);
 
   return (
     <aside className="w-full lg:w-[315px]">
-      <h3 className="text-[26px] font-bold pb-1 border-b border-primary text-primary mb-[19px]">
+      <h3 className="text-[26px] font-bold border-b border-primary text-primary mb-[19px]">
         FILTROS
       </h3>
 
-      {isEmpty ? (
-        <p className="text-tertiary">Nenhum filtro encontrado</p>
-      ) : (
-        <Fragment>
-          <Group
-            options={options}
-            isLoading={isLoading}
-            title="TIPO / ATRIBUTO"
-          />
+      <Group
+        options={typeAndAttribute}
+        title="TIPO / ATRIBUTO"
+        value={typeAndAttributeOptions}
+        onChange={handleTypeAndAttributeOptionsChange}
+      />
 
-          <div className="flex items-center gap-0 lg:gap-4 flex-col lg:flex-row">
-            <Button
-              type="button"
-              variant="primary"
-              disabled={isLoading}
-              className="w-full"
-            >
-              PESQUISAR
-            </Button>
+      <Group
+        options={CARD_TYPE}
+        title="TIPO DE CARTA"
+        value={cardTypeOptions}
+        onChange={handleCardTypeOptionsChange}
+      />
 
-            <Button
-              type="button"
-              variant="secondary"
-              disabled={isLoading}
-              className="w-full"
-            >
-              LIMPAR FILTROS
-            </Button>
-          </div>
-        </Fragment>
-      )}
+      <div className="flex items-center gap-0 lg:gap-4 flex-col lg:flex-row">
+        <Button
+          type="button"
+          variant="primary"
+          className="w-full"
+          onClick={onSubmit}
+        >
+          PESQUISAR
+        </Button>
+
+        <Button
+          type="button"
+          variant="secondary"
+          className="w-full"
+          onClick={handleClearFilters}
+        >
+          LIMPAR FILTROS
+        </Button>
+      </div>
     </aside>
   );
 };
