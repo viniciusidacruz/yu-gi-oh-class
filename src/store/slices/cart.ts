@@ -4,6 +4,7 @@ import type { Card } from "@/shared/interfaces";
 
 interface CartState {
   shipping: number;
+  shippingType: "fixed" | "express";
   items: Card[];
 }
 
@@ -12,6 +13,7 @@ interface CartActions {
   addItem: (item: Card) => void;
   removeItem: (itemId: number) => void;
   setShipping: (shipping: number) => void;
+  setShippingType: (shippingType: "fixed" | "express") => void;
 }
 
 export type CartSlice = CartState & CartActions;
@@ -19,6 +21,7 @@ export type CartSlice = CartState & CartActions;
 const initialState: CartState = {
   items: [],
   shipping: 0,
+  shippingType: "fixed",
 };
 
 export const useCartSlice: StateCreator<
@@ -30,6 +33,7 @@ export const useCartSlice: StateCreator<
   ...initialState,
   clearItems: () => set({ items: [] }),
   setShipping: (shipping) => set({ shipping }),
+  setShippingType: (shippingType) => set({ shippingType }),
   addItem: (item) =>
     set((state) => {
       state.items.push(item);

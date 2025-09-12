@@ -1,9 +1,13 @@
+import { Fragment } from "react";
 import { useShallow } from "zustand/react/shallow";
 
 import { useAppStore } from "@/store";
-import { getTotalValue, formatCurrency } from "@/shared/utils";
+import { getTotalValue } from "@/shared/utils";
 
+import { Sidebar } from "./components/Sidebar";
 import { CartItem } from "./components/CartItem";
+import { SubTotal } from "./components/SubTotal";
+import { Shipping } from "./components/Shipping";
 
 export function Checkout() {
   const { items } = useAppStore(
@@ -13,6 +17,7 @@ export function Checkout() {
   );
 
   const total = getTotalValue(items);
+  const hasItems = items.length > 0;
 
   return (
     <section className="container mx-auto px-8 mt-[63px]">
@@ -24,20 +29,22 @@ export function Checkout() {
 
       <div className="flex flex-col lg:flex-row gap-[100px] mt-[52px]">
         <div className="w-full border-[3px] border-quaternary px-12 py-10 flex flex-col gap-8">
-          {items.map((item) => (
-            <CartItem key={item.id} item={item} />
-          ))}
+          {hasItems ? (
+            <Fragment>
+              {items.map((item) => (
+                <CartItem key={item.id} item={item} />
+              ))}
 
-          <div className="mt-6 lg:mt-0 border-b border-quaternary pb-[30px] w-full flex flex-col items-end">
-            <h4 className="font-bold">Subtotal</h4>
+              <SubTotal total={total} />
 
-            <span className="font-bold text-2xl text-secondary">
-              {formatCurrency(total)}
-            </span>
-          </div>
+              <Shipping />
+            </Fragment>
+          ) : (
+            <p>Nenhum item encontrado</p>
+          )}
         </div>
 
-        <p>teste</p>
+        {hasItems && <Sidebar />}
       </div>
     </section>
   );

@@ -14,7 +14,7 @@ export const CartItem = ({ item }: CartItemProps) => {
         src={item.card_images[0].image_url}
       />
 
-      <div className="h-full flex flex-col items-center lg:items-start justify-between">
+      <div className="h-full flex flex-col items-center lg:items-start justify-between w-full">
         <h3 className="font-bold">{item.name}</h3>
 
         <p className="font-light mt-[2px] line-clamp-4 mb-auto">{item.desc}</p>
